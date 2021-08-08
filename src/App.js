@@ -57,6 +57,8 @@ class App extends React.Component {
           {this.configPageCodition()}
           {this.timerPageCondition()}
         </CSSTransitionGroup>
+
+
     </div>
    )
   }

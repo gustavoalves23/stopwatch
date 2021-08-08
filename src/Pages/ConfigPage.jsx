@@ -50,7 +50,7 @@ class ConfigPage extends React.Component {
           transitionName="item"
           transitionEnterTimeout={500}
           transitionLeaveTimeout={300}>
-          {sum ? <span><a onClick= {this.startCounterCall} href="#"></a></span> : ""}
+          {sum ? <span className="button"><a onClick= {this.startCounterCall} href="#"></a></span> : ""}
         </CSSTransitionGroup>
     {/* <button className={sum ? "start-couter-button" : "start-couter-button"} onClick= {this.startCounterCall} >Iniciar</button> */}
     </div>
