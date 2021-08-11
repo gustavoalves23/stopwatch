@@ -3,6 +3,7 @@ import ConfigPage from './Pages/ConfigPage';
 import TimerPage from './Pages/TimerPage';
 import React from 'react';
 import { CSSTransitionGroup } from 'react-transition-group'
+import Weather from './Components/Weather';
 
 class App extends React.Component {
   constructor(props) {
@@ -57,8 +58,6 @@ class App extends React.Component {
           {this.configPageCodition()}
           {this.timerPageCondition()}
         </CSSTransitionGroup>
-
-
     </div>
    )
   }
