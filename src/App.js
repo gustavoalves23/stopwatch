@@ -65,19 +65,22 @@ class App extends React.Component {
     const { config } = this.state;
   return (
     <div>
-          <CSSTransitionGroup
-          component="div"
-          transitionName="example"
-          transitionEnterTimeout={1000}
-          transitionLeaveTimeout={1000}>
-          {this.configPageCodition()}
-          {this.timerPageCondition()}
-        </CSSTransitionGroup>
-        <footer className="footer">
-          <a target="_blank" href="https://github.com/gustavoalves23">
-            <Icon className={ config ? "conditional-git-icon" : "git-icon" } size={3} path={ mdiGithub } />
-          </a>
-        </footer>
+      <CSSTransitionGroup
+        component="div"
+        transitionName="in-out-fade"
+        transitionEnterTimeout={1000}
+        transitionLeaveTimeout={1000}
+      >
+        {this.configPageCodition()}
+        {this.timerPageCondition()}
+        { (window.innerWidth > 1641 || !config) && (
+          <footer className="footer">
+            <a target="_blank" href="https://github.com/gustavoalves23">
+              <Icon className="git-icon" size={3} path={ mdiGithub } />
+            </a>
+          </footer>
+        ) }
+      </CSSTransitionGroup>
     </div>
    )
   }
