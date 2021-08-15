@@ -27,8 +27,8 @@ class ConfigPage extends React.Component {
     this.setState({
       [timeIndex]: value,
     })
-    console.log(value);
   }
+
 
   render() {
     const { m1,m2,s1,s2 } = this.state;
@@ -36,7 +36,6 @@ class ConfigPage extends React.Component {
     return (
       <div className="config-page-div">
       <div className="tip-div">
-      <h1 className="tip">Tip: Hover the numbers to change them!</h1>
       </div>
       <div className='main-div'>
       <FirstDigit updateValues={this.updateValues} />
@@ -50,15 +49,12 @@ class ConfigPage extends React.Component {
           transitionName="item"
           transitionEnterTimeout={500}
           transitionLeaveTimeout={300}>
-          {sum ? <span className="button"><a onClick= {this.startCounterCall} href="#"></a></span> : ""}
+          {sum ? <span className="button-start"><a onClick= {this.startCounterCall} href="#"></a></span> : ""}
         </CSSTransitionGroup>
-    {/* <button className={sum ? "start-couter-button" : "start-couter-button"} onClick= {this.startCounterCall} >Iniciar</button> */}
     </div>
     </div>
     )
   }
 }
-
-// ${m1}${m2}${s1}${s2}
 
 export default ConfigPage
