@@ -27,8 +27,8 @@ class ConfigPage extends React.Component {
     this.setState({
       [timeIndex]: value,
     })
-    console.log(value);
   }
+
 
   render() {
     const { m1,m2,s1,s2 } = this.state;

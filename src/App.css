@@ -255,6 +255,52 @@ transform: translate3d(250px,0,0);
   color: white;
 }
 
+.git-icon {
+  color: rgba(255, 255, 255, 0.486);
+  align-self: flex-end;
+  margin-bottom: 20px;
+  transition: 0.3s;
+  border-radius: 10px;
+}
+
+.conditional-git-icon {
+  color: rgba(255, 255, 255, 0.486);
+  align-self: flex-end;
+  margin-bottom: 20px;
+  transition: 0.3s;
+  border-radius: 10px;
+}
+
+.git-icon:hover {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.452);
+  padding: 10px;
+}
+
+
+@media screen and (max-width: 1500px) {
+  .timerdiv {
+    font-size: 250px;
+    width: 250px;
+  }
+
+  .colondiv {
+    font-size: 250px;
+  }
+
+  .conditional-git-icon {
+    display: none;
+  }
+}
+
+.conditional-git-icon:hover {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.452);
+  padding: 10px;
+}
+
+
+
 .timer-page {
   display: flex;
   flex-direction: column;
@@ -267,6 +313,8 @@ transform: translate3d(250px,0,0);
 .timer {
   display: flex;
   margin: 50px;
+  transition: 0.3s;
+  border-radius: 20px;
 }
 
 .pauseButton {
@@ -306,7 +354,6 @@ transform: translate3d(250px,0,0);
   font-family: 'Montserrat', sans-serif;
 	font-weight: 500;
   width: 200px;
-	/* font-style: italic; */
 	padding: 1.5rem 3rem;
   
 }
@@ -344,37 +391,64 @@ transform: translate3d(250px,0,0);
   
 }
 
-.teste {
-  display: flex;
-  align-items: center;
-  width: 202px;
-  height: 33%;
-
+.return {
+  position: absolute;
+  left: 20px;
 }
 
-.weather-div {
-  width: 100%;
-  height: 33vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.weather-icon {
-  width: 80px;
-}
-
-.weather-full-div {
-  margin-top: 50px;
-  font-family:Arial, Helvetica, sans-serif;
+.arrow {
   color: white;
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.37);
-  width: 500px;
-  height: 20vh;
-  border-radius: 20px;
+  border-radius: 10px;
+  margin-left: 20px;
+  transition: 0.3s;
 }
+
+.arrow:hover {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.425);
+  cursor: pointer;
+  padding: 10px;
+}
+
+.arrow-disabled {
+  color: rgba(255, 255, 255, 0.384);
+}
+
+.timer:hover {
+  background-color: rgba(255, 255, 255, 0.418);
+  cursor: pointer;
+  padding: 20px;
+
+}
+
+.paused {
+  background-color:rgba(233, 33, 66, 0.829);
+}
+
+.paused:hover {
+  background-color:rgba(233, 33, 66, 0.829);
+}
+
+.timer-end {
+  display: flex;
+  margin: 50px;
+  transition: 0.3s;
+  border-radius: 20px;
+  background-color:rgba(233, 33, 66, 0.829);
+  padding: 40px;
+}
+
+.timer-end:hover {
+  cursor: pointer;
+  background-color:rgba(241, 0, 40, 0.925);
+  padding: 20px;
+}
+
+.footer {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  bottom: 0;
+}
+

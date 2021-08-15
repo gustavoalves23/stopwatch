@@ -1,9 +1,10 @@
 import './App.css';
 import ConfigPage from './Pages/ConfigPage';
 import TimerPage from './Pages/TimerPage';
+import Icon from '@mdi/react';
+import { mdiGithub } from '@mdi/js';
 import React from 'react';
 import { CSSTransitionGroup } from 'react-transition-group'
-import Weather from './Components/Weather';
 
 class App extends React.Component {
   constructor(props) {
@@ -27,6 +28,17 @@ class App extends React.Component {
     }, 1000)
   }
 
+  stopCounter = () => {
+    this.setState ({
+      timer: false,
+    })
+    setTimeout(() => {
+      this.setState({
+        config: true,
+      })
+    }, 1000)
+  }
+
   configPageCodition = () => {
     const { config } = this.state;
     if (config) {
@@ -36,18 +48,21 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount() {
+    document.title="Stopwatch"
+  }
+
   timerPageCondition = () => {
     const { timer, value } = this.state;
     if (timer) {
       return (
-        <TimerPage value={value} />
+        <TimerPage value={value} stopCounter={ this.stopCounter } />
       )
     }
   }
-  
-
 
   render() {
+    const { config } = this.state;
   return (
     <div>
           <CSSTransitionGroup
@@ -58,6 +73,11 @@ class App extends React.Component {
           {this.configPageCodition()}
           {this.timerPageCondition()}
         </CSSTransitionGroup>
+        <footer className="footer">
+          <a target="_blank" href="https://github.com/gustavoalves23">
+            <Icon className={ config ? "conditional-git-icon" : "git-icon" } size={3} path={ mdiGithub } />
+          </a>
+        </footer>
     </div>
    )
   }

@@ -1,5 +1,6 @@
 import React from 'react';
-import Weather from '../Components/Weather';
+import Icon from '@mdi/react';
+import { mdiArrowLeft, mdiGithub } from '@mdi/js';
 
 class TimerPage extends React.Component {
   constructor(props) {
@@ -7,12 +8,12 @@ class TimerPage extends React.Component {
     const { value } = this.props;
     const minutes = (Number(value.substring(0,2)) > 9) ? Number(value.substring(0,2)) : "0" + Number(value.substring(0,2));
     const seconds = (Number(value.substring(2,4)) > 9) ? Number(value.substring(2,4)) : "0" + Number(value.substring(2,4));
-    console.log((Number(value.substring(0,2)) * 60) + Number(value.substring(2,4)));
     this.state = {
       timerPause: true,
       minutes,
       seconds,
       time: (Number(value.substring(0,2)) * 60) + Number(value.substring(2,4)),
+      ended: false,
     }
   }
 
@@ -22,6 +23,9 @@ class TimerPage extends React.Component {
       minutes: (Math.floor(previousState.time / 60) > 9) ? Math.floor(previousState.time / 60) : "0" + Math.floor(previousState.time / 60), 
       seconds: (previousState.time % 60 > 9) ? previousState.time % 60 : "0" + (previousState.time % 60) ,
     }))
+    if (this.state.time === - 1) {
+      this.stopTimer();
+    }
   }
 
   startTimer = () => {
@@ -31,8 +35,11 @@ class TimerPage extends React.Component {
     this.countdown = setInterval(this.timer, 1000);
   }
 
-  stopTimer = () => {
+  stopTimer = async () => {
     clearInterval(this.countdown);
+    this.setState({
+      ended: true,
+    })
   }
 
   pauseTimer = () => {
@@ -46,34 +53,24 @@ class TimerPage extends React.Component {
     this.startTimer();
   }
 
-  componentDidUpdate() {
-    if (this.state.time === - 1) {
-      this.stopTimer();
-    }
+
+  componentWillUnmount() {
+    this.stopTimer();
   }
 
   render() {
-    const {minutes, seconds, timerPause } = this.state;
+    const {minutes, seconds, timerPause, ended } = this.state;
+    const { stopCounter } = this.props;
     return (
       <div className="timer-page">
-        <div className="weather-div">
-          <Weather />
+        <div className="return">
+          { !ended && <Icon onClick={ stopCounter } className="arrow arrow-disabled" size={ 3 } path={ mdiArrowLeft } /> }
         </div>
-        <div className="timer">
+        <div onClick={ ended ? stopCounter : (timerPause ? this.startTimer : this.pauseTimer) } className={ ended ? 'timer-end' : (timerPause ? 'timer paused' : 'timer') }>
           <div className="timerdiv">{ minutes }</div>
           <div className="colondiv" >:</div>
           <div className="timerdiv">{ seconds }</div>
         </div>
-        <div className="teste">
-        <button 
-      className="button--dione button"
-        onClick={ timerPause ? this.startTimer : this.pauseTimer } 
-      >
-        <span>
-          { timerPause ? "Retornar" : "Pausar" }
-        </span>
-      </button>
-        </div>  
       </div>
     )
   }
